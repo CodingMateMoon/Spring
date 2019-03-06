@@ -12,6 +12,6 @@
 <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
 </head>
 <body>
-
+	<a href="${path }/mybatis.do">첫 mybatis</a>
 </body>
 </html>
