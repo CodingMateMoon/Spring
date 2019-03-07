@@ -10,19 +10,19 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.mybatis.model.service.MybatisService;
 import com.mybatis.model.service.MybatisServiceImpl;
+import com.mybatis.model.vo.Student;
 
 /**
- * Servlet implementation class InputNameEndServlet
+ * Servlet implementation class InputStudentEndServlet
  */
-@WebServlet("/inputNameEnd.do")
-public class InputNameEndServlet extends HttpServlet {
+@WebServlet("/inputStudentEnd.do")
+public class InputStudentEndServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    
-	private MybatisService service = new MybatisServiceImpl();
+    private MybatisService service = new MybatisServiceImpl();   
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public InputNameEndServlet() {
+    public InputStudentEndServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,8 +32,17 @@ public class InputNameEndServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		String name= request.getParameter("name");
-		int result = service.insertStudent(name);
+		String memberId = request.getParameter("memberId");
+		String memberPwd = request.getParameter("memberPwd");
+		String memberName = request.getParameter("memberName");
+		String gender = request.getParameter("gender");
+		int age = Integer.parseInt(request.getParameter("age"));
+		String email = request.getParameter("email");
+		String phone = request.getParameter("phone");
+		String address = request.getParameter("address");
+		String hobby = request.getParameter("hobby");
+		Student s = new Student(memberId, memberPwd, memberName, gender, age, email, phone, address, hobby);
+		int result = service.insertStudent(s);
 		response.setContentType("text/html;charset=UTF-8");
 		response.getWriter().append(result > 0 ? "입력완료" : "입력실패");
 	}

@@ -14,5 +14,6 @@
 <body>
 	<a href="${path }/mybatis.do">첫 mybatis</a>
 	<a href="${path }/inputName.do">이름만 등록</a>
+	<a href="${path }/inputMember.do">학생 등록</a>
 </body>
 </html>

@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.mybatis.model.dao.MybatisDao;
 import com.mybatis.model.dao.MybatisDaoImpl;
+import com.mybatis.model.vo.Student;
 public class MybatisServiceImpl implements MybatisService {
 
 	private MybatisDao dao = new MybatisDaoImpl();
@@ -25,10 +26,24 @@ public class MybatisServiceImpl implements MybatisService {
 	public int insertStudent(String name) {
 		SqlSession session = getSession();
 		int result = dao.insertStudent(session, name);
-		// TODO Auto-generated method stub
-		return 0;
+		if (result > 0) session.commit();
+		else session.rollback();
+		session.close();
+		return result;
 	}
 
+	@Override
+	public int insertStudent(Student s) {
+		SqlSession session = getSession();
+		int result = dao.insertStudent(session, s);
+		if (result > 0) session.commit();
+		else session.rollback();
+		session.close();
+		
+		return result;
+	}
+
+	
 	
 
 }

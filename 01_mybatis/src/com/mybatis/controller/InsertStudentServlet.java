@@ -12,17 +12,16 @@ import com.mybatis.model.service.MybatisService;
 import com.mybatis.model.service.MybatisServiceImpl;
 
 /**
- * Servlet implementation class InputNameEndServlet
+ * Servlet implementation class InsertStudentServlet
  */
-@WebServlet("/inputNameEnd.do")
-public class InputNameEndServlet extends HttpServlet {
+@WebServlet("/inputMember.do")
+public class InsertStudentServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    
-	private MybatisService service = new MybatisServiceImpl();
+    private MybatisService service = new MybatisServiceImpl();   
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public InputNameEndServlet() {
+    public InsertStudentServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,11 +30,7 @@ public class InputNameEndServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
-		String name= request.getParameter("name");
-		int result = service.insertStudent(name);
-		response.setContentType("text/html;charset=UTF-8");
-		response.getWriter().append(result > 0 ? "입력완료" : "입력실패");
+		request.getRequestDispatcher("/views/student/inputStudent.jsp").forward(request, response);
 	}
 
 	/**
