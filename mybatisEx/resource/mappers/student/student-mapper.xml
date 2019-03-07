@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="student">
+  <insert id="insertTest">
+  	insert into student values(seq_student.nextval, '김준구', '01035872931', 'ksd529@gmail.com', '경기도 시흥시', sysdate)
+  </insert>
+</mapper>
