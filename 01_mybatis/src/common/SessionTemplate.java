@@ -15,9 +15,11 @@ public class SessionTemplate {
 		String resource = "/mybatis-config.xml";
 		SqlSession session = null;
 		try {
-			InputStream is = Resources.getResourceAsStream(resource);
+			
+			InputStream is = Resources.getResourceAsStream("/mybatis-config.xml");
 			SqlSessionFactoryBuilder builder = new SqlSessionFactoryBuilder();
 			SqlSessionFactory factory = builder.build(is);
+
 			session = factory.openSession(false); // 트랜젝션 설정 (autocommit(false))
 		} catch(IOException e) {
 			e.printStackTrace();

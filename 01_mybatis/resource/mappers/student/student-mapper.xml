@@ -2,7 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <!-- int result = session.insert("student.insertStudent"); -->
 <mapper namespace="student">
+	<!-- resultType 무조건 int, 인자 받을때 parameterType -->
 	<insert id="insertStudent">
-	
+		insert into member values('user03','user03','유병승', 'M', 19, 'prince0324@naver.com', '01036446259', '경기도시흥시', '개그', sysdate)
 	</insert>
 </mapper>
