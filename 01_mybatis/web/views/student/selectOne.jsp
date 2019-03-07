@@ -8,13 +8,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>selectOne</title>
 <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
 </head>
 <body>
-	<a href="${path }/mybatis.do">첫 mybatis</a>
-	<a href="${path }/inputName.do">이름만 등록</a>
-	<a href="${path }/inputMember.do">학생 등록</a>
-	<a href="${path }/selectCount.do">학생 수 조회</a>
+	<div id="student-container">
+		<h2>학생 정보 검색</h2>
+		<p>총 학생 수는 ${count }명 입니다.</p>
+	</div>
 </body>
 </html>

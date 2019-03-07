@@ -1,6 +1,8 @@
 package com.mybatis.controller;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -42,6 +44,18 @@ public class InputStudentEndServlet extends HttpServlet {
 		String address = request.getParameter("address");
 		String hobby = request.getParameter("hobby");
 		Student s = new Student(memberId, memberPwd, memberName, gender, age, email, phone, address, hobby);
+		/* map을 이용해서 값 넣기*/
+		Map<String, Object> map = new HashMap();
+		map.put("id", memberId);
+		map.put("pw", memberPwd);
+		map.put("name", memberName);
+		map.put("gender", gender);
+		map.put("age", age);
+		map.put("email", email);
+		map.put("phone", phone);
+		map.put("address", address);
+		map.put("hobby", hobby);
+//		int result = service.insertStudent(map);
 		int result = service.insertStudent(s);
 		response.setContentType("text/html;charset=UTF-8");
 		response.getWriter().append(result > 0 ? "입력완료" : "입력실패");

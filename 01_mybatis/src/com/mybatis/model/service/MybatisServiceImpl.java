@@ -2,6 +2,8 @@ package com.mybatis.model.service;
 
 import static common.SessionTemplate.getSession;
 
+import java.util.Map;
+
 import org.apache.ibatis.session.SqlSession;
 
 import com.mybatis.model.dao.MybatisDao;
@@ -40,6 +42,24 @@ public class MybatisServiceImpl implements MybatisService {
 		else session.rollback();
 		session.close();
 		
+		return result;
+	}
+
+	@Override
+	public int insertStudent(Map<String, Object> map) {
+		SqlSession session = getSession();
+		int result = dao.insertStudent(session, map);
+		if (result > 0) session.commit();
+		else session.rollback();
+		session.close();
+		return result;
+	}
+
+	@Override
+	public int selectCount() {
+		SqlSession session = getSession();
+		int result = dao.selectCount(session);
+		session.close();
 		return result;
 	}
 

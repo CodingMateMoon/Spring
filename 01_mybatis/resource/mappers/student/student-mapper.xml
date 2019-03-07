@@ -2,16 +2,26 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <!-- int result = session.insert("student.insertStudent"); -->
 <mapper namespace="student">
+
+	<!-- resultType 자바가 가지고 있는 타입 resultType="_int" -->
+	<select id="selectCount" resultType="_int">
+		select count(*) from member		
+	</select>
+
 	<!-- resultType 무조건 int, 인자 받을때 parameterType -->
 	<insert id="insertStudent">
 		insert into member values('user03','user03','유병승', 'M', 19, 'prince0324@naver.com', '01036446259', '경기도시흥시', '개그', sysdate)
 	</insert>
 	<!-- 기본자료형이면 알아서 mapping, vo객체일경우 명시해야 -->
-	<insert id="insertName" parameterType="String">
+	<insert id="insertName" parameterType="string">
 		insert into member values('user04', 'user04', #{name}, 'M', 19, 'prince0324@naver.com', '01036446259', '경기도시흥시', '개그', sysdate)
 	</insert>
 	<!-- 변수명에 맞는 getter로 가서 getXXX 메소드 실행 -->
-	<insert id="insertAll" parameterType="com.mybatis.model.vo.Student">
+	<insert id="insertAll" parameterType="student">
 		insert into member values(#{memberId}, #{memberPwd}, #{memberName}, #{gender}, #{age}, #{email}, #{phone}, #{address}, #{hobby}, sysdate)
+	</insert>
+	
+	<insert id="insertMap" parameterType="map">
+		insert into member values(#{id}, #{pw}, #{name}, #{gender}, #{age}, #{email}, #{phone}, #{address}, #{hobby}, sysdate)
 	</insert>
 </mapper>
