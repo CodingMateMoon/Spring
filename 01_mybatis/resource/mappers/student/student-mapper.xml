@@ -5,8 +5,47 @@
 
 	<!-- resultType 자바가 가지고 있는 타입 resultType="_int" -->
 	<select id="selectCount" resultType="_int">
-		select count(*) from member		
+		select count(*) from student		
 	</select>
+	
+	<select id="selectOne" parameterType="_int" resultType="com.mybatis.model.vo.Rstudent">
+		select student_no as studentNo, 
+			student_name as studentName, 
+			student_tel as studentTel, 
+			student_email as studentEmail, 
+			student_addr as studentAddr, 
+			reg_date 
+		from student where student_no = #{no}
+	</select>
+	<select id="selectMap" resultType="map">
+		select * from student where student_no = #{no}
+	</select>
+	
+	<!-- <select id="selectTotal" resultType="Rstudent">
+		select student_no as studentNo, 
+			student_name as studentName, 
+			student_tel as studentTel, 
+			student_email as studentEmail, 
+			student_addr as studentAddr, 
+			reg_date  from student order by reg_date desc
+	</select> -->
+	
+	<select id="selectTotal" resultMap="RstudentMap">
+		select * from student order by reg_date desc
+	</select>
+	
+	<select id="selectTotalMap" resultType="map">
+		select * from student order by reg_date desc
+	</select>
+	
+	<!-- reg_date는 안써도 값 받아옴, 컬럼명이 다른 경우에만 명시 -->
+	<resultMap type="Rstudent" id="RstudentMap">
+		<result column="student_no" property="studentNo"/>
+		<result column="student_name" property="studentName"/>
+		<result column="student_tel" property="studentTel"/>
+		<result column="student_email" property="studentEmail"/>
+		<result column="student_addr" property="studentAddr"/>
+	</resultMap>
 
 	<!-- resultType 무조건 int, 인자 받을때 parameterType -->
 	<insert id="insertStudent">
@@ -24,4 +63,8 @@
 	<insert id="insertMap" parameterType="map">
 		insert into member values(#{id}, #{pw}, #{name}, #{gender}, #{age}, #{email}, #{phone}, #{address}, #{hobby}, sysdate)
 	</insert>
+	
+	<delete id="deleteStudent">
+		delete from student where student_no = #{no}
+	</delete>
 </mapper>

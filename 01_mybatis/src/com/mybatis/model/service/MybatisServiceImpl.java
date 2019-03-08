@@ -2,12 +2,14 @@ package com.mybatis.model.service;
 
 import static common.SessionTemplate.getSession;
 
+import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
 import com.mybatis.model.dao.MybatisDao;
 import com.mybatis.model.dao.MybatisDaoImpl;
+import com.mybatis.model.vo.Rstudent;
 import com.mybatis.model.vo.Student;
 public class MybatisServiceImpl implements MybatisService {
 
@@ -62,6 +64,60 @@ public class MybatisServiceImpl implements MybatisService {
 		session.close();
 		return result;
 	}
+
+	@Override
+	public Rstudent selectOne(int no) {
+		SqlSession session = getSession();
+		Rstudent s = dao.selectOne(session, no);
+		session.close();
+		return s;
+	}
+
+	@Override
+	public Map selectMap(int no) {
+		SqlSession session = getSession();
+		Map map = dao.selectMap(session, no);
+		session.close();
+		return map;
+	}
+
+	@Override
+	public int deleteStudent(int no) {
+		SqlSession session = getSession();
+		int result = dao.deleteStudent(session, no);
+		if (result > 0) session.commit();
+		else session.rollback();
+		session.close();
+		return result;
+	}
+
+	/*@Override
+	public List<Rstudent> selectTotal() {
+		SqlSession session = getSession();
+		List<Rstudent> list = dao.selectTotal(session);
+		session.close();
+		return list;
+	}*/
+	
+	@Override
+	public List selectTotal() {
+		SqlSession session = getSession();
+		List<Rstudent> list = dao.selectTotal(session);
+		session.close();
+		return list;
+	}
+
+	@Override
+	public List<Map<String, String>> selectTotalMap() {
+		SqlSession session = getSession();
+		List<Map<String, String>> list = dao.selectTotalMap(session);
+		session.close();
+		return list;
+	}
+	
+	
+	
+	
 
 	
 	
