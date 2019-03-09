@@ -15,21 +15,24 @@ public class Rstudent {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Rstudent(int studentNo, String studentName, String studentTel, Date reg_date) {
+	public Rstudent(int studentNo, String studentName, String studentTel, String studentEmail, String studentAddr,
+			Date reg_date) {
 		super();
 		this.studentNo = studentNo;
 		this.studentName = studentName;
 		this.studentTel = studentTel;
+		this.studentEmail = studentEmail;
+		this.studentAddr = studentAddr;
 		this.reg_date = reg_date;
 	}
-	
-	
 
-	public Rstudent(int studentNo, String studentName, String studentTel) {
+	public Rstudent(int studentNo, String studentName, String studentTel, String studentEmail, String studentAddr) {
 		super();
 		this.studentNo = studentNo;
 		this.studentName = studentName;
 		this.studentTel = studentTel;
+		this.studentEmail = studentEmail;
+		this.studentAddr = studentAddr;
 	}
 
 	public int getStudentNo() {
@@ -56,6 +59,22 @@ public class Rstudent {
 		this.studentTel = studentTel;
 	}
 
+	public String getStudentEmail() {
+		return studentEmail;
+	}
+
+	public void setStudentEmail(String studentEmail) {
+		this.studentEmail = studentEmail;
+	}
+
+	public String getStudentAddr() {
+		return studentAddr;
+	}
+
+	public void setStudentAddr(String studentAddr) {
+		this.studentAddr = studentAddr;
+	}
+
 	public Date getReg_date() {
 		return reg_date;
 	}
@@ -67,10 +86,8 @@ public class Rstudent {
 	@Override
 	public String toString() {
 		return "Rstudent [studentNo=" + studentNo + ", studentName=" + studentName + ", studentTel=" + studentTel
-				+ ", reg_date=" + reg_date + "]";
+				+ ", studentEmail=" + studentEmail + ", studentAddr=" + studentAddr + ", reg_date=" + reg_date + "]";
 	}
 
-	
-	
 	
 }

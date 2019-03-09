@@ -27,19 +27,19 @@
 				<c:forEach var="map" items="${list}">
 				<tr>
 					
-					<%-- <td>${map['studentNo'] }</td>
+					<td>${map['studentNo'] }</td>
 					<td>${map['studentName'] }</td>
 					<td>${map['studentTel'] }</td>
 					<td>${map['studentEmail'] }</td>
 					<td>${map['studentAddr'] }</td>
-					<td>${map['reg_date'] }</td> --%>
+					<td>${map['reg_date'] }</td>
 					<!-- 오라클 컬럼명 대문자로 반환하기 때문에 가져올 때 key를 대문자로 주어야 -->
-					<td>${map['STUDENT_NO'] }</td>
+					<%-- <td>${map['STUDENT_NO'] }</td>
 					<td>${map['STUDENT_NAME'] }</td>
 					<td>${map['STUDENT_TEL'] }</td>
 					<td>${map['STUDENT_EMAIL'] }</td>
 					<td>${map['STUDENT_ADDR'] }</td>
-					<td>${map['REG_DATE'] }</td>
+					<td>${map['REG_DATE'] }</td> --%>
 				</tr>
 				</c:forEach>
 			</c:if>

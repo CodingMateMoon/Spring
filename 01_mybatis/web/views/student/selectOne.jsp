@@ -58,7 +58,7 @@
 					<td>${map['studentTel'] }</td>
 					<td>${map['studentEmail'] }</td>
 					<td>${map['studentAddr'] }</td>
-					<td>${map['REG_DATE'] }</td>
+					<td>${map['reg_date'] }</td>
 				</tr>
 			</table>
 		</form>
