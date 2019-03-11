@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="emp">
+	<select id="selectAll" resultType="map">
+		select * from kh.employee
+	</select>
+	<!-- 타입에 따라 형식에 맞추기 위해 $ : 글자 그대로값, # : '' 자동으로 들어감 -->
+	<select id="selectSearch" parameterType="map" resultType="map">
+		select * from kh.employee where ${searchType} like '%'||#{keyword}||'%'
+	</select>
+</mapper>
