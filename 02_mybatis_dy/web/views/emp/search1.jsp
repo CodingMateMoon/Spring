@@ -16,12 +16,12 @@
 		<form action="${path }/empSearchEnd.do" method="post">
 			<select name="searchType" required>
 				<option value="" disabled selected>검색타입</option>
-				<option value="emp_id">사번</option>
-				<option value="emp_name">사원명</option>
-				<option value="email">이메일</option>
-				<option value="phone">전화번호</option>
+				<option value="emp_id" <c:if test="${'emp_id' eq param.searchType}">selected</c:if>>사번</option>
+				<option value="emp_name" <c:if test="${'emp_name' eq param.searchType}">selected</c:if>>사원명</option>
+				<option value="email" <c:if test="${'email' eq param.searchType}">selected</c:if>>이메일</option>
+				<option value="phone" <c:if test="${'phone' eq param.searchType}">selected</c:if>>전화번호</option>
 			</select>
-			<input type="text" name="keyword" required/>
+			<input type="text" name="keyword" value="${param.keyword }" required/>
 			<input type="submit" value="검색"/>
 		</form>
 		<table>
