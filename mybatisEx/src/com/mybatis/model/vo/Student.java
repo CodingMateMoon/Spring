@@ -6,30 +6,21 @@ public class Student {
 	
 	private int studentNo;
 	private String studentName, studentTel, studentEmail, studentAddr;
-	private Date regDate;
+	private Date reg_date;
 	
 	public Student() {
 		// TODO Auto-generated constructor stub
 	}
 
 	public Student(int studentNo, String studentName, String studentTel, String studentEmail, String studentAddr,
-			Date regDate) {
+			Date reg_date) {
 		super();
 		this.studentNo = studentNo;
 		this.studentName = studentName;
 		this.studentTel = studentTel;
 		this.studentEmail = studentEmail;
 		this.studentAddr = studentAddr;
-		this.regDate = regDate;
-	}
-
-	public Student(int studentNo, String studentName, String studentTel, String studentEmail, String studentAddr) {
-		super();
-		this.studentNo = studentNo;
-		this.studentName = studentName;
-		this.studentTel = studentTel;
-		this.studentEmail = studentEmail;
-		this.studentAddr = studentAddr;
+		this.reg_date = reg_date;
 	}
 
 	public int getStudentNo() {
@@ -72,19 +63,21 @@ public class Student {
 		this.studentAddr = studentAddr;
 	}
 
-	public Date getRegDate() {
-		return regDate;
+	public Date getReg_date() {
+		return reg_date;
 	}
 
-	public void setRegDate(Date regDate) {
-		this.regDate = regDate;
+	public void setReg_date(Date reg_date) {
+		this.reg_date = reg_date;
 	}
 
 	@Override
 	public String toString() {
 		return "Student [studentNo=" + studentNo + ", studentName=" + studentName + ", studentTel=" + studentTel
-				+ ", studentEmail=" + studentEmail + ", studentAddr=" + studentAddr + ", regDate=" + regDate + "]";
+				+ ", studentEmail=" + studentEmail + ", studentAddr=" + studentAddr + ", reg_date=" + reg_date + "]";
 	}
+
+	
 	
 	
 }

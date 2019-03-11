@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd" >
 <configuration>
+	<typeAliases>
+		<typeAlias type="com.mybatis.model.vo.Student" alias="Student"/>
+		<typeAlias type="com.mybatis.model.vo.Member" alias="Member"/>
+	</typeAliases>
+
 	<environments default="develop">
 		<environment id="develop">
 			<transactionManager type="JDBC"/>
@@ -14,5 +19,6 @@
 	</environments>
 	<mappers>
 		<mapper resource="/mappers/student/student-mapper.xml"/>
+		<mapper resource="/mappers/mybatis/mybatis-mapper.xml"/>
 	</mappers>
 </configuration>

@@ -4,4 +4,42 @@
   <insert id="insertTest">
   	insert into student values(seq_student.nextval, '김준구', '01035872931', 'ksd529@gmail.com', '경기도 시흥시', sysdate)
   </insert>
+  <!-- 내부적으로 preparedStatement로 처리 -->
+  <select id="memberSearch" parameterType="string" resultType="map">
+  	select * from member where member_name like '%'||#{keyword}||'%'
+  </select>
+  
+  <select id="selectAllStudent" resultType="Student">
+  	select student_no as studentNo,
+  		student_name as studentName,
+  		student_tel as studentTel,
+  		student_email as studentEmail,
+  		student_addr as studentAddr,
+  		reg_date from student order by reg_date desc
+  </select>
+  
+  <resultMap type="Student" id="StudentMap">
+  	<result column="student_no" property="studentNo"/>
+  	<result column="student_name" property="studentName"/>
+  	<result column="student_tel" property="studentTel"/>
+  	<result column="student_email" property="studentEmail"/>
+  	<result column="student_addr" property="studentAddr"/>
+  </resultMap>
+  
+  <select id="selectAllStudentMap" resultMap="StudentMap">
+  	select * from student order by reg_date desc
+  </select>
+  
+  <select id="memberAllMap" resultType="map">
+  	select * from member
+  </select>
+  
+  <select id="memberAll" resultType="Member">
+  	select member_id as memberId,
+  		member_pwd as memberPwd,
+  		member_name as memberName,
+  		gender, age, email, phone, address, hobby,
+  		enroll_date as enrollDate
+  	 from member
+  </select>
 </mapper>

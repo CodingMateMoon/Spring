@@ -14,5 +14,14 @@
 <body>
 	<a href="${path }/insertTest">insertTest</a>
 	<a href="${path }/insertStudent">insertStudentForm</a>
+	
+	<a href="${path }/inputName.do">이름만 등록</a>
+	<a href="${path }/inputMember.do">학생 등록</a>
+	<a href="${path }/selectCount.do">학생 수 조회</a>
+	<a href="${path }/selectMember.do">member 조회</a>
+	<a href="${path }/selectMermberMap.do">member 조회(MAP)</a>
+	
+	<a href="${path }/selectAllStudent">전체 조회</a>
+	<a href="${path }/selectAllStudentMap">전체 조회(Map방식)</a>
 </body>
 </html>
