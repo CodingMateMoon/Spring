@@ -8,5 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 public interface EmpDao {
 
 	List<Map> selectAll(SqlSession session);
-	List<Map> selectSearch(SqlSession session, Map<String, String> map);
+	List<Map> selectSearch(SqlSession session, Map<String, Object> map);
+	int selectCount(SqlSession session);
+	List<Map> selectPaging(SqlSession session, int cPage, int numPerPage);
 }

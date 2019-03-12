@@ -9,6 +9,10 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
 <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
 </head>
 <body>
@@ -42,6 +46,15 @@
 			<label>이하
 				<input type="radio" name="hdate" value="h_le" <c:if test="${'h_le' eq param.sal }">checked</c:if>/>
 			</label>
+			<br/>
+			<label>직급</label>
+			<input type="checkbox" name="job" value="J1">대표
+			<input type="checkbox" name="job" value="J2">부사장
+			<input type="checkbox" name="job" value="J3">부장
+			<input type="checkbox" name="job" value="J4">차장
+			<input type="checkbox" name="job" value="J5">과장
+			<input type="checkbox" name="job" value="J6">대리
+			<input type="checkbox" name="job" value="J7">사원
 			<input type="submit" value="검색"/>
 		</form>
 		<table>
@@ -59,6 +72,7 @@
 				<th>매니져사번</th>
 				<th>입사일</th>
 				<th>성별</th>
+				<th>직책</th>
 			</tr>
 			<c:forEach var="emp" items="${list }">
 				<tr>
@@ -79,9 +93,13 @@
 					<%-- <td><c:out value="${emp['HIRE_DATE'] }"/></td> --%>
 					<td><fmt:formatDate value="${emp['HIRE_DATE'] }" type="date" pattern="yyyy년 MM월 dd일"/></td>
 					<td><c:out value="${emp['GENDER'] }"/></td>
+					<td><c:out value="${emp['JOB_NAME'] }"/></td>
 				</tr>
 			</c:forEach>
 		</table>
+	</div>
+	<div>
+		${pageBar }
 	</div>
 </body>
 </html>

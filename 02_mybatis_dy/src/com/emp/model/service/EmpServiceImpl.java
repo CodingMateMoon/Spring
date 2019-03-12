@@ -23,9 +23,25 @@ public class EmpServiceImpl implements EmpService {
 	}
 
 	@Override
-	public List<Map> selectSearch(Map<String, String> map) {
+	public List<Map> selectSearch(Map<String, Object> map) {
 		SqlSession session = getSession();
 		List<Map> list = dao.selectSearch(session, map);
+		session.close();
+		return list;
+	}
+
+	@Override
+	public int selectCount() {
+		SqlSession session = getSession();
+		int count = dao.selectCount(session);
+		session.close();
+		return count;
+	}
+
+	@Override
+	public List<Map> selectPaging(int cPage, int numPerPage) {
+		SqlSession session = getSession();
+		List<Map> list = dao.selectPaging(session, cPage, numPerPage);
 		session.close();
 		return list;
 	}
