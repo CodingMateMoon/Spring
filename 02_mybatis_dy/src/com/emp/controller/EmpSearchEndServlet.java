@@ -1,6 +1,9 @@
 package com.emp.controller;
 
 import java.io.IOException;
+import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -38,9 +41,27 @@ public class EmpSearchEndServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		String searchType = request.getParameter("searchType");
 		String keyword = request.getParameter("keyword");
+		String gender = request.getParameter("gender");
+		String hireDate = request.getParameter("hireDate");
+		
+		/*SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		Date to = null;
+		try {
+			to = (Date) transFormat.parse(hireDate);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println(to);*/
+
 		Map<String, String> map = new HashMap();
 		map.put("searchType", searchType);
 		map.put("keyword", keyword);
+		map.put("gender", gender);
+		map.put("salary", request.getParameter("salary"));
+		map.put("sal", request.getParameter("sal"));
+		map.put("hireDate", hireDate);
+		map.put("hdate", request.getParameter("hdate"));
 		List<Map> list = service.selectSearch(map);
 		
 		request.setAttribute("list", list);
