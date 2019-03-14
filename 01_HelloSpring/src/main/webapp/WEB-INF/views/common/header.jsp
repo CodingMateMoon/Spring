@@ -29,9 +29,19 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                <ul class="navbar-nav mr-auto">
-               	<li class="nav-item active"><a class="nav-link" href="${pageContext.request.contextPath}">Home</a></li>
+               	<%-- <li class="nav-item active"><a class="nav-link" href="${pageContext.request.contextPath}">Home</a></li> --%>
+               	<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}">Home</a></li>
                	<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/board/boardList">게시판</a></li>
-               	<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath }/domo/domo.do">domo</a></li>
+               	<%-- <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath }/domo/domo.do">domo</a></li> --%>
+               	<li class="nav-item dropdown">
+               	<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+               	demo
+               	</a>
+             		<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+             		<a class="dropdown-item" href="${pageContext.request.contextPath }/domo/domo.do">domo 등록</a>
+             		<a class="dropdown-item" href="${pageContext.request.contextPath }/domo/selectList.do">domo 리스트</a>
+             		</div>
+               	</li>
                </ul>
             </div>
          </nav>

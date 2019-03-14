@@ -56,6 +56,63 @@
                </div>
             </div>
          </div>
+         <div class="list-group">
+         	<button type="button" onclick="domo1();" class="list-group-item list-group-item-action">
+         	파라미터 핸들링-HttpServletRequest
+         	</button>
+         	<button type="button" onclick="domo2();" class="list-group-item list-group-item-action">
+         	파라미터 핸들링 - @RequestParam
+         	</button>
+         	<button type="button" onclick="domo3();" class="list-group-item list-group-item-action">
+         	파라미터 핸들링 - VO 이용
+         	</button>
+         	<button type="button" onclick="domo4();" class="list-group-item list-group-item-action">
+         	파라미터 핸들링 - insert 데이터
+         	</button>
+         	<button type="button" onclick="domo5();" class="list-group-item list-group-item-action">
+         	파라미터 핸들링 - select 데이터
+         	</button>
+         	<button type="button" onclick="domo6();" class="list-group-item list-group-item-action">
+         	파라미터 핸들링 - selectAll 데이터
+         	</button>
+         </div>
+         <script>
+         	function domo1(){
+         		$("#devFrm").attr("action", "${pageContext.request.contextPath}/domo/domo1.do");
+         		$("#devFrm").attr("method", "post");
+         		$("#devFrm").submit();
+         	}
+         	
+         	function domo2(){
+         		$("#devFrm").attr("action", "${pageContext.request.contextPath}/domo/domo2.do");
+         		$("#devFrm").attr("method", "post");
+         		$("#devFrm").submit();
+         	}
+         	
+         	function domo3(){
+         		$("#devFrm").attr("action", "${pageContext.request.contextPath}/domo/domo3.do");
+         		$("#devFrm").attr("method", "post");
+         		$("#devFrm").submit();
+         	}
+         	
+         	function domo4(){
+         		$("#devFrm").attr("action", "${pageContext.request.contextPath}/domo/insert.do");
+         		$("#devFrm").attr("method", "post");
+         		$("#devFrm").submit();
+         	}
+         	
+         	function domo5() {
+         		$("#devFrm").attr("action", "${pageContext.request.contextPath}/domo/select.do");
+         		$("#devFrm").attr("method", "post");
+         		$("#devFrm").submit();
+         	}
+         	
+         	function domo6() {
+         		$("#devFrm").attr("action", "${pageContext.request.contextPath}/domo/select.do");
+         		$("#devFrm").attr("method", "post");
+         		$("#devFrm").submit();
+         	}
+         </script>
       </form>
    </div>
 
