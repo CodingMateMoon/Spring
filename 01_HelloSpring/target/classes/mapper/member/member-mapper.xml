@@ -4,4 +4,12 @@
 	<insert id="insertMember" parameterType="com.kh.spring.model.vo.Member">
 		insert into Member values(#{userId}, #{password}, #{userName}, #{gender}, #{age}, #{email}, #{phone}, #{address}, #{hobby, typeHandler=strArr}, default)
 	</insert>
+	
+	<resultMap id="memberMap" type="member">
+		<result column="hobby" property="hobby" typeHandler="strArr"/>
+	</resultMap>
+	
+	<select id="selectOne" parameterType="member" resultMap="memberMap">
+		select * from member where userid= #{userId}
+	</select>
 </mapper>

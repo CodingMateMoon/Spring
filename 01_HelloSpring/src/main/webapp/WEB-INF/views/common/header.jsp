@@ -45,36 +45,49 @@
              		</div>
                	</li>
                </ul>
-               <button class="btn btn-outline-success my-2 my-sm-0" type="button" data-toggle="modal" data-target="#loginModal">
-               	로그인
-               </button>
-               &nbsp;
-               <button class="btn btn-outline-success my-2 my-sm-0" type="button" onclick="location.href='${path}/member/memberEnroll.do'">
-               	 회원가입
-               </button>
+               <c:if test="${loginMember == null }">
+	               <button class="btn btn-outline-success my-2 my-sm-0" type="button" data-toggle="modal" data-target="#loginModal">
+	               	로그인
+	               </button>
+	               &nbsp;
+	               <button class="btn btn-outline-success my-2 my-sm-0" type="button" onclick="location.href='${path}/member/memberEnroll.do'">
+	               	 회원가입
+	               </button>
+               </c:if>
+               <c:if test="${loginMember != null }">
+               	<span>
+               		<a href="#">${loginMember.userName }</a>
+               		님 환영합니다!
+               	</span>
+               	<button class="btn btn-outline-success my-2 my-sm-0" type="button" onclick="location.href='${path}/member/logOut.do'">
+	               	 로그아웃
+	            </button>
+               </c:if>
             </div>
          </nav>
       </header>
       
-      <!-- 로그인 모달 만들기 -->
+     <!-- 로그인 모달 만들기 -->
       <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      	<div class="modal-dialog" role="document">
-      		<div class="modal-header">
-      			<h5 class="modal-title" id="exampleModalLabel">로그인</h5>
-      			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-      				<span aria-hidden="true">&times;</span>
-      			</button>
-      		</div>
-      		<form action="${path }/member/memberLogin.do" method="post">
-	      		<div class="modal-body">
-	      			<input type="text" class="form-control" name="userId" placeholder="아이디" required/><br/>
-	      			<input type="password" class="form-control" name="password" placeholder="비밀번호" required/>
-	      		</div>
-	      		<div class="modal-footer">
-	      			<button type="submit" class="btn btn-outline-success">로그인</button>
-	      			<button type="button" class="btn btn-outline-success" data-dismiss="modal">취소</button>
-	      		</div>
-      		</form>
-      	</div>
+         <div class="modal-dialog" role="document">
+            <div class="modal-content">
+               <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">로그인</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                     <span aria-hidden="true">&times;</span>
+                  </button>
+               </div>
+               <form action="${path }/member/memberlogin.do" method="post">
+               <div class="modal-body">
+                  <input type="text" class="form-control" name="userId" placeholder="아이디" required/>
+                  <input type="password" class="form-control" name="password" placeholder="비밀번호"/>
+               </div>
+               <div class="modal-footer">
+                  <button type="submit" class="btn btn-outline-success">로그인</button>
+                  <button type="button" class="btn btn-outline-success" data-dismiss="modal">취소</button>
+               </div>
+               </form>
+            </div>
+         </div>
       </div>
 </div>
