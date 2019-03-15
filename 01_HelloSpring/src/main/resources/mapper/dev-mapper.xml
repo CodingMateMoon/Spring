@@ -27,4 +27,5 @@
 	<select id="selectList" resultMap="devMap">
 		select * from dev
 	</select>
+	
 </mapper>

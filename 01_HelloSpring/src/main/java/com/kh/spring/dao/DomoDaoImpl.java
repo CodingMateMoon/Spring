@@ -10,7 +10,7 @@ import com.kh.spring.model.vo.Dev;
 
 @Repository
 public class DomoDaoImpl implements DomoDao {
-	
+	// session Spring bean으로 등록해서 자동 생성
 	@Autowired
 	private SqlSessionTemplate session;
 
@@ -36,6 +36,4 @@ public class DomoDaoImpl implements DomoDao {
 		return session.selectList("dev.selectList");
 	}
 
-	
-	
 }

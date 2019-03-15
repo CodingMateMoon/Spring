@@ -6,15 +6,9 @@
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 
 <jsp:include page="/WEB-INF/views/common/header.jsp">
-	<jsp:param value="Dev 목록" name="pageTitle"/>
+      <jsp:param value="Dev 등록결과" name="pageTitle"/>
 </jsp:include>
-<style>
-table#tbl-dev{   //demo--> dev로 수정
-   margin:0 auto;
-   width:50%;
-}
-</style>
-
+<section>
 	<table class="table">
 		<tr>
 			<th scope="col">번호</th>
@@ -23,21 +17,28 @@ table#tbl-dev{   //demo--> dev로 수정
 			<th scope="col">이메일</th>
 			<th scope="col">성별</th>
 			<th scope="col">개발가능언어</th>
+			<th scope="col">수정</th>
 		</tr>
 		<c:forEach var="p" items="${list }" varStatus="vs">
 			<tr>
 				<td>${vs.count}</td>
 				<td>${p["devName"] }</td>
 				<td>${p["devAge"] }</td>
-				<td>${p["devEmail"] }</td>
-				<td>${p["devGender"] }</td>
+				<td>${p.devEmail }</td>
+				<td>${p.devGender == "M"? "남" : "여" }</td>
 				<%-- <c:forEach var="lang" items="" --%>
 				<td>
-				<c:forEach var="lang" items="${p['devLang']}" varStatus="v">
-					${lang},
+				<c:forEach var="lang" items="${p.devLang}" varStatus="vs">
+					${vs.index != 0 ? "," : "" }${lang }
 				</c:forEach>
+				</td>
+				<td>
+					<button type="button" class="btn btn-out-line-light" onclick="">수정</button>
+					<button type="button" class="btn btn-out-line-light" onclick="">삭제</button>
 				</td>
 			</tr>
 		</c:forEach>
 	</table>
+
+</section>
 <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>

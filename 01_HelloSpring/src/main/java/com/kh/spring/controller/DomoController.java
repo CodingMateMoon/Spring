@@ -73,6 +73,7 @@ public class DomoController {
 		return "redirect:/";
 	}
 	
+	
 	@RequestMapping("/domo/select.do")
 	public String select(int devAge, HttpServletRequest re) {
 		Dev dev = service.select(devAge);
@@ -81,9 +82,16 @@ public class DomoController {
 	}
 	
 	@RequestMapping("/domo/selectList.do")
-	public String selectList(HttpServletRequest re) {
+	public String selectList(Model model) {
+		List<Dev> list = service.selectList();
+		System.out.println(list);
+		model.addAttribute("list",list);
+		return "domo/domoList";
+	}
+	/*public String selectList(HttpServletRequest re) {
 		List<Dev> list = service.selectList();
 		re.setAttribute("list", list);
 		return "domo/domoselectList";
-	}
+	}*/
+
 }
