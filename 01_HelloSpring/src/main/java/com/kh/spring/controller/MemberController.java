@@ -2,13 +2,16 @@ package com.kh.spring.controller;
 
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+//import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.spring.model.vo.Member;
 import com.kh.spring.service.MemberService;
@@ -16,7 +19,11 @@ import com.kh.spring.service.MemberService;
 //@SessionAttributes(value= {"loginMember"})
 @Controller
 public class MemberController {
-
+	// log4j를 이용한 방식
+	// private Logger logger = Logger.getLogger(MemberController.class);
+	// slf4j 이용
+	private Logger logger = LoggerFactory.getLogger(MemberController.class);
+	
 	@Autowired
 	private MemberService service;
 	
@@ -31,9 +38,11 @@ public class MemberController {
 	@RequestMapping("/memberEnrollEnd.do")
 	public String memberEnrollEnd(Member m, Model model) {
 		String rawPw = m.getPassword();
-		System.out.println(rawPw);
+		logger.debug(rawPw);
+//		System.out.println(rawPw);
 		String enPw = bcEncoder.encode(rawPw);
-		System.out.println(enPw);
+//		System.out.println(enPw);
+		logger.debug(enPw);
 		m.setPassword(enPw);
 		
 		int result = service.insertMember(m);
@@ -51,10 +60,17 @@ public class MemberController {
 	
 	@RequestMapping("/member/memberlogin.do")
 	public String memberLogin(Member m, Model model, HttpSession session) {
-		System.out.println(m);
+//		System.out.println(m);
+		logger.debug("memberLogin() : " + m);
+		logger.debug("" + session);
 		Member result = service.selectOne(m);
 		String msg= "";
 		String loc="/";
+		try {
+			throw new RuntimeException("일부러 발생");
+		} catch(RuntimeException e) {
+			logger.error("로그인 에러 : " + e.getMessage() + " : " + e.getStackTrace());
+		}
 		String enPw = bcEncoder.encode(m.getPassword());
 		if (result != null) {
 //			if (enPw.equals(result.getPassword())) {
@@ -81,5 +97,46 @@ public class MemberController {
 		session1.invalidate();
 		// 그냥 주소값 줄 경우 F5 눌렀을 때 계속 그대로
 		return "redirect:/";
+	}
+	
+	@RequestMapping("/member/memberUpdate.do")
+	public String updateMember(String userId, Model model) {
+		System.out.println(userId);
+		Member m = new Member();
+		m.setUserId(userId);
+		Member result = service.selectOne(m);
+		model.addAttribute("m", result);
+		return "member/memberUpdate";
+	}
+	
+	@RequestMapping("/member/update.do")
+	public ModelAndView update(Member m) {
+		
+//		System.out.println(m);
+		logger.debug("" + m);
+		Member result = service.selectOne(m);
+//		System.out.println(result);
+		logger.debug("" + result);
+		// 데이터와 뷰 정보 하나의 객체에 담아서 보낼 수 있음
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("member/updateForm");
+		mv.addObject("m", result);
+		return mv;
+	}
+	
+	@RequestMapping("member/updateEnd.do")
+	public ModelAndView updateEnd(Member m) {
+		int result = service.update(m);
+		String msg="";
+		String loc="/member/update.do?userId=" + m.getUserId();
+		if (result > 0) {
+			msg = "수정완료";
+		} else {
+			msg = "수정실패";
+		}
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("common/msg");
+		mv.addObject("msg", msg);
+		return mv;
 	}
 }

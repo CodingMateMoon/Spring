@@ -31,4 +31,12 @@
 		<beans:qualifier value="choice"/>
 	</beans:bean> -->
 	
+	<interceptors>
+		<interceptor>
+			<!-- ** : 전체 / mapping이 일치할때 bean 등록 -->
+			<mapping path="/domo/*"></mapping>
+			<beans:bean id="loggerInterceptor" class="com.kh.spring.common.LoggerInterceptor"/>
+		</interceptor>
+	</interceptors>
+	
 </beans:beans>

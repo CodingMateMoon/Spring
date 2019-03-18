@@ -6,4 +6,5 @@ public interface MemberDao {
 
 	int insertMember(Member m);
 	Member selectOne(Member m);
+	int update(Member m);
 }

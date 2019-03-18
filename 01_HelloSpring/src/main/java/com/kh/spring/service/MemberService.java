@@ -7,4 +7,5 @@ public interface MemberService {
 	
 	int insertMember(Member m);
 	Member selectOne(Member m);
+	int update(Member m);
 }

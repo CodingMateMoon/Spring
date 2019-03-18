@@ -56,7 +56,7 @@
                </c:if>
                <c:if test="${loginMember != null }">
                	<span>
-               		<a href="#">${loginMember.userName }</a>
+               		<a href="${path }/member/update.do?userId=${loginMember.userId}">${loginMember.userName }</a>
                		님 환영합니다!
                	</span>
                	<button class="btn btn-outline-success my-2 my-sm-0" type="button" onclick="location.href='${path}/member/logOut.do'">

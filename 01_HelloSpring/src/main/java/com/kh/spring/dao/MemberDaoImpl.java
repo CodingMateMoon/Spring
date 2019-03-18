@@ -23,5 +23,10 @@ public class MemberDaoImpl implements MemberDao {
 		return session.selectOne("member.selectOne", m);
 	}
 
+	@Override
+	public int update(Member m) {
+		return session.update("member.update", m);
+	}
+
 	
 }
