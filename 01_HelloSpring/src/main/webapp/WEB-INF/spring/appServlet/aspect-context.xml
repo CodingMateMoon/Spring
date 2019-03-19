@@ -6,12 +6,12 @@
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
 	<bean id="loggerAspect" class="com.kh.spring.common.aop.LoggerAspect"></bean>
 	<!-- aspect : advisor, pointCut 가진 클래스
-	 *: 접근제한자 spring.memo 밑 모든 클래스 ..* 그 클래스의 모든 메소드..*(..) -->
+	 *: 접근제한자 spring 밑 모든 클래스 ..* 그 클래스의 모든 메소드..*(..) -->
 	<aop:config>
 		<aop:aspect id="loggerAspect" ref="loggerAspect">
-			<aop:pointcut expression="execution(* com.kh.spring.memo..*(..))" id="pcforAll"/>
+			<aop:pointcut expression="execution(* com.kh.spring..Memo*.*(..))" id="pcforAll"/>
 			<!-- 실행할 메소드, 어떤 메소드 실행전 loggerAdvice 할지 
-			pointcut이 정해줌 부모엘리먼트 자식이 가져올 수 있는것과 유사-->
+			pointcut이 정해줌 부모엘리먼트 자식이 가져올 수 있는것과 유사, 시점 정하는 것 advice-->
 			<aop:around method="loggerAdvice" pointcut-ref="pcforAll"/>
 		</aop:aspect>
 	</aop:config>

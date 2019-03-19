@@ -24,7 +24,9 @@ public class LoggerAspect {
 			componentType = "Dao \t: ";
 		}
 		logger.warn("[before]" + componentType + type + "." + method + "()");
-		// proceed 가지고 잇는 정보를 받음, proceed 하기 전에 먼저 잡음
-		return joinPoint.proceed();
+		// proceed 가지고 잇는 정보를 받음, proceed 하기 전에 먼저 잡음, proceed 기점 전처리 후처리 수행
+		Object obj = joinPoint.proceed();
+		logger.warn("[after]" + componentType + type + "." + method + "()");
+		return obj;
 	}
 }
