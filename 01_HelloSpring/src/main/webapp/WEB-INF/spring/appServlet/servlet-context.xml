@@ -35,8 +35,13 @@
 		<interceptor>
 			<!-- ** : 전체 / mapping이 일치할때 bean 등록 -->
 			<mapping path="/domo/*"></mapping>
+			<mapping path="/board/boardForm"></mapping>
 			<beans:bean id="loggerInterceptor" class="com.kh.spring.common.LoggerInterceptor"/>
 		</interceptor>
 	</interceptors>
+	
+	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<beans:property name="maxUploadSize" value="10458600"/><!-- 10MB -->
+	</beans:bean>
 	
 </beans:beans>
