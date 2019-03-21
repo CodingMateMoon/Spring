@@ -5,25 +5,13 @@ import java.sql.Date;
 public class Attachment {
 	private int attachmentNo;
 	private int boardNo;
-	private String originalFilename, renamedFilename;
+	private String originalFileName, renamedFileName;
 	private Date uploadDate;
 	private int downloadCount;
 	private String status;
 	
 	public Attachment() {
 		// TODO Auto-generated constructor stub
-	}
-
-	public Attachment(int attachmentNo, int boardNo, String originalFilename, String renamedFilename, Date uploadDate,
-			int downloadCount, String status) {
-		super();
-		this.attachmentNo = attachmentNo;
-		this.boardNo = boardNo;
-		this.originalFilename = originalFilename;
-		this.renamedFilename = renamedFilename;
-		this.uploadDate = uploadDate;
-		this.downloadCount = downloadCount;
-		this.status = status;
 	}
 
 	public int getAttachmentNo() {
@@ -42,20 +30,20 @@ public class Attachment {
 		this.boardNo = boardNo;
 	}
 
-	public String getOriginalFilename() {
-		return originalFilename;
+	public String getOriginalFileName() {
+		return originalFileName;
 	}
 
-	public void setOriginalFilename(String originalFilename) {
-		this.originalFilename = originalFilename;
+	public void setOriginalFileName(String originalFileName) {
+		this.originalFileName = originalFileName;
 	}
 
-	public String getRenamedFilename() {
-		return renamedFilename;
+	public String getRenamedFileName() {
+		return renamedFileName;
 	}
 
-	public void setRenamedFilename(String renamedFilename) {
-		this.renamedFilename = renamedFilename;
+	public void setRenamedFileName(String renamedFileName) {
+		this.renamedFileName = renamedFileName;
 	}
 
 	public Date getUploadDate() {
@@ -84,8 +72,8 @@ public class Attachment {
 
 	@Override
 	public String toString() {
-		return "Attachment [attachmentNo=" + attachmentNo + ", boardNo=" + boardNo + ", originalFilename="
-				+ originalFilename + ", renamedFilename=" + renamedFilename + ", uploadDate=" + uploadDate
+		return "Attachment [attachmentNo=" + attachmentNo + ", boardNo=" + boardNo + ", originalFileName="
+				+ originalFileName + ", renamedFileName=" + renamedFileName + ", uploadDate=" + uploadDate
 				+ ", downloadCount=" + downloadCount + ", status=" + status + "]";
 	}
 

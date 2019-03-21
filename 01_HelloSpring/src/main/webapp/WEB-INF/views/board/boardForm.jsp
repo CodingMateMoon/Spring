@@ -33,7 +33,7 @@
     </div>
     <script>
     	$(function(){
-    		$('[name=upFile]').change(frrunction(){
+    		$('[name=upFile]').change(function(){
     			var fileName = $(this).prop('files')[0].name;
     			$(this).next('.custom-file-label').html(fileName);
     		})

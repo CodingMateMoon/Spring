@@ -11,6 +11,8 @@ public interface BoardDao {
 	List<Board> selectList(int cPage, int numPerPage);
 	int insertBoard(Board b);
 	int insertAttachment(Attachment a);
+	Board selectBoard(int boardNo);
+	List<Attachment> selectAttachment(int boardNo);
 	
 	List<Board> selectBoardList();
 }
