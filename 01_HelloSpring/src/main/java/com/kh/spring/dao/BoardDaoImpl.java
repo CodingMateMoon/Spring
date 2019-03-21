@@ -7,6 +7,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.kh.spring.model.vo.Attachment;
 import com.kh.spring.model.vo.Board;
 
 @Repository
@@ -34,5 +35,18 @@ public class BoardDaoImpl implements BoardDao {
 		// TODO Auto-generated method stub
 		return session.selectList("board.selectBoardList");
 	}
+
+	@Override
+	public int insertBoard(Board b) {
+		return session.insert("board.insertBoard", b);
+	}
+
+	@Override
+	public int insertAttachment(Attachment a) {
+		// TODO Auto-generated method stub
+		return session.insert("board.insertAttachment", a);
+	}
+	
+	
 
 }

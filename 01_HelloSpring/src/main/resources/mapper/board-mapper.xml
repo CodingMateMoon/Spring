@@ -22,4 +22,12 @@
 	<select id="selectBoardList" resultMap="boardMap">
 		select * from board
 	</select>
+	
+	<insert id="insertBoard" parameterType="board">
+		insert into board values(seq_boardno.nextval, #{boardTitle}, #{boardWriter}, #{boardContent}, default, default)
+		<selectKey keyProperty="boardNo" resultType="_int" order="AFTER">
+			select seq_boardno.currval from dual
+		</selectKey>
+	</insert>
+	<insert id=""
 </mapper>

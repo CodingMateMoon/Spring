@@ -88,5 +88,7 @@ public class Attachment {
 				+ originalFilename + ", renamedFilename=" + renamedFilename + ", uploadDate=" + uploadDate
 				+ ", downloadCount=" + downloadCount + ", status=" + status + "]";
 	}
+
+	
 	
 }

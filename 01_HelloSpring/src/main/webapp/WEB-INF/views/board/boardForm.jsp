@@ -21,6 +21,10 @@
                     <input type="file" class="custom-file-input" name="upFile" id="upFile1">
                     <label class="custom-file-label" for="upFile1">파일을 선택하세요</label>
                 </div>
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" name="upFile" id="upFile2">
+                    <label class="custom-file-label" for="upFile2">파일을 선택하세요</label>
+                </div>    
             </div>
             <textarea class="form-control" name="boardContent" placeholder="내용" required></textarea>
             <br />
@@ -29,7 +33,7 @@
     </div>
     <script>
     	$(function(){
-    		$('[name=upFile]').change(function(){
+    		$('[name=upFile]').change(frrunction(){
     			var fileName = $(this).prop('files')[0].name;
     			$(this).next('.custom-file-label').html(fileName);
     		})
