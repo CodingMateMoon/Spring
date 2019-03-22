@@ -71,11 +71,11 @@ public class LoggerAspect {
 			if (o instanceof Member) {
 				m = (Member) o;
 			}
-			if (m!=null && !"admin".equals(m.getUserId())) {
+			/*if (m!=null && !"admin".equals(m.getUserId())) {
 //				throw new Exception();
 				System.out.println("----admin------");
 				System.out.println(m);
-			}
+			}*/
 		}
 		
 		logger.warn("before : " + sig.getDeclaringType());

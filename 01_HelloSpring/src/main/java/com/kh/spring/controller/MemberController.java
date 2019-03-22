@@ -1,5 +1,8 @@
 package com.kh.spring.controller;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -137,6 +140,37 @@ public class MemberController {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("common/msg");
 		mv.addObject("msg", msg);
+		return mv;
+	}
+	
+	/*@RequestMapping("/member/checkId.do")
+	public String selectId(String userId) {
+		Member m = new Member();
+		m.setUserId(userId);
+		Member result = service.selectOne(m);
+		System.out.println(result);
+		logger.debug("" + result);
+		return result.getUserId();
+	}*/
+	/*@RequestMapping("/member/checkId.do")
+	public void checkId(String userId, HttpServletResponse res) throws IOException{
+		Member m = new Member();
+		m.setUserId(userId);
+		Member result = service.selectOne(m);
+		boolean isOk = result != null ? false : true;
+		res.getWriter().println(isOk);
+	}*/
+	@RequestMapping("/member/checkId.do")
+	public ModelAndView checkId(String userId) throws UnsupportedEncodingException {
+		ModelAndView mv = new ModelAndView();
+		Member m = new Member();
+		m.setUserId(userId);
+		Member result = service.selectOne(m);
+		boolean isOk = result != null ? false : true;
+		mv.addObject("isOk", isOk);
+		mv.addObject("msg", URLEncoder.encode("고마워요~ 감동", "UTF-8"));
+		mv.addObject("su", 19);
+		mv.setViewName("jsonView");
 		return mv;
 	}
 }
