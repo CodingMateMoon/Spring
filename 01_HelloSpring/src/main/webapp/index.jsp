@@ -37,7 +37,7 @@
 					/* public Board(int boardNo, String boardTitle, String boardWriter, String boardContent, Date boardDate, int readCount,
 							int fileCount) { */
 					var table = $("<table>");
-					table.append("<td><th>boardNo</th><th>title</th><th>writer</th><th>content</th><th>date</th><th>readCount</th><th>fileCount</th></td>");
+					table.append("<td><th>boardNo</th><th>title</th><th>writer</th><th>content</th><th>date</th><th>readCount</th></td>");
 					console.log(data);
 					console.log(table);
 					for (var i = 0; i < data.length; i++) {
