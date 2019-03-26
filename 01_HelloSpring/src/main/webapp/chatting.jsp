@@ -31,7 +31,8 @@
 			
 				socket.onmessage= function(e) {
 					console.log(e);
-					$("#container").append("<p>" + e.data + "</p>");
+					var msg = JSON.parse(e.data);
+					$("#container").append("<p>" + msg["nickname"] + " : " + msg["msg"] + "</p>");
 				}
 				/* socket.onmessage= message;
 				

@@ -37,12 +37,13 @@ public class SocketHandler extends TextWebSocketHandler {
 	protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
 		// TODO Auto-generated method stub
 		// DEBUG com.kh.spring.common.socket.SocketHandler.handleTextMessage(SocketHandler.java:28) - message : TextMessage payload=[하이], byteCount=6, last=true]
+		// message : TextMessage payload=[{"nickname":"의조","msg":"ㅁㅁ"}]
 		logger.debug("message : " + message);
 		String msg = message.getPayload();
 		logger.debug(msg);
-		// 메시지 파싱 처리
+		// 메시지 파싱 처리 - {"nickname":"의조","msg":"ㅁㅁ"}
 		/*
-		 JSON 형식으로 온것 다른 형식으로 바꿈
+		 JSON 형식으로 온 것 다른 형식으로 바꿈
 		 JSON으로 넘어온 문자열 HashMap으로 키 밸류 형식으로 바꿈
 		 잭슨이 지원하는 ObjectMapper 원하는 클래스 형식으로 바꿈
 		 * */
@@ -63,7 +64,7 @@ public class SocketHandler extends TextWebSocketHandler {
 		 * */
 		for (WebSocketSession s : list) {
 			// 나한테는 안보냄
-			if (s == session) {continue;}
+//			if (s == session) {continue;}
 			/*if (map.containsKey("whisper")) {
 				if (map.get("whisper").equals(list))
 			}*/
