@@ -14,6 +14,7 @@
 	
 	<script>
 		var socket;
+		var nickname = prompt("닉네임을 입력하세요");
 		$(function(){
 			socket = new WebSocket("ws://" + document.location.host +"/spring/chatting"); 
 			/* socket = new WebSocket("ws:192.168.20.20:9090/spring/chatting");  */
@@ -43,7 +44,10 @@
 				}
 				
 				$("#btn").click(function(){
-					socket.send($("#msg").val());
+					// whisper : 선택한 사람한테만 보냄
+					var msg = {"nickname" : nickname, "msg" : $("#msg").val()};
+					// 자바스크립트 객체를 스트링형식으로 바꿈
+					socket.send(JSON.stringify(msg));
 					$("#msg").val("");
 				});
 		});
