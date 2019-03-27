@@ -10,12 +10,31 @@
 <body>
 	<input type="text" id="msg"/>
 	<input type="button" id="btn" value="전송"/>
+	<input type="file" id="file" name="upfile"/>
+	<input type="button" id="filebtn" value="전송"/>
 	<div id="container"></div>
 	
 	<script>
 		var socket;
 		var nickname = prompt("닉네임을 입력하세요");
 		$(function(){
+			$("#filebtn").click(function(){
+				var file = $("#file")[0].files[0];
+				console.log(file);
+				socket.binaryType = "arraybuffer";
+				var reader = new FileReader();
+				
+				reader.onload = function(e) {
+					console.log(e);
+					var msg = {"nickname" : nickname, "msg" : file.name, "flag" : "file"};
+					socket.send(JSON.stringify(msg));
+					socket.send(e.target.result);
+				}
+				// 파일 ArrayBuffer 형식으로 변환해서 읽어들임, local 웹브라우저가 함부로 접근못하게막음, 운영체제 파일시스템까지 접근하면 위험, 내가 가진 정보 공유하기 위해 통신하는 수단
+				<!-- 웹브라우저가 임시경로에 저장하고 거기에서 읽어올 수 있게함. FileReader 읽어올때 url 엄청김-->
+				reader.readAsArrayBuffer(file);
+			})
+			
 			socket = new WebSocket("ws://" + document.location.host +"/spring/chatting"); 
 			/* socket = new WebSocket("ws:192.168.20.20:9090/spring/chatting");  */
 			/* 
@@ -32,6 +51,7 @@
 				socket.onmessage= function(e) {
 					console.log(e);
 					var msg = JSON.parse(e.data);
+					console.log(msg);
 					$("#container").append("<p>" + msg["nickname"] + " : " + msg["msg"] + "</p>");
 				}
 				/* socket.onmessage= message;
