@@ -33,7 +33,7 @@
 				// 파일 ArrayBuffer 형식으로 변환해서 읽어들임, local 웹브라우저가 함부로 접근못하게막음, 운영체제 파일시스템까지 접근하면 위험, 내가 가진 정보 공유하기 위해 통신하는 수단
 				<!-- 웹브라우저가 임시경로에 저장하고 거기에서 읽어올 수 있게함. FileReader 읽어올때 url 엄청김-->
 				reader.readAsArrayBuffer(file);
-			})
+			});
 			
 			socket = new WebSocket("ws://" + document.location.host +"/spring/chatting"); 
 			/* socket = new WebSocket("ws:192.168.20.20:9090/spring/chatting");  */
