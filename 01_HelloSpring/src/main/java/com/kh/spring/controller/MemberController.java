@@ -66,6 +66,7 @@ public class MemberController {
 //		System.out.println(m);
 		logger.debug("memberLogin() : " + m);
 		logger.debug("" + session);
+		logger.debug("이거는 되니? 안되니");
 		Member result = service.selectOne(m);
 		String msg= "";
 		String loc="/";
@@ -78,7 +79,7 @@ public class MemberController {
 		if (result != null) {
 //			if (enPw.equals(result.getPassword())) {
 			if (bcEncoder.matches(m.getPassword(), result.getPassword())) {
-				msg ="로그인 성공";
+				msg ="로그인 성공ggg";
 				session.setAttribute("loginMember", result);
 //				model.addAttribute("loginMember",result);
 			} else {

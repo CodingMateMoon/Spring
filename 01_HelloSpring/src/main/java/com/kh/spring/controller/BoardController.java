@@ -38,6 +38,7 @@ public class BoardController {
 		BufferedInputStream bis = null;
 		ServletOutputStream sos = null;
 		
+		
 		String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload");
 		try {
 			FileInputStream fis = new FileInputStream(new File(saveDir + "/" +rName));
